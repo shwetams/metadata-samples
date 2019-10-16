@@ -1,0 +1,16 @@
+{
+     "ExecutionStartTime": "2019-10-16T04:25:35.1798808Z",
+     "ExecutionEndTime": "2019-10-16T04:25:50.1452973Z",
+     "Sources": [{
+             "Dataset": "OneFile",
+             "Type": "BlobFolder",
+             "AzureResource": "sampledata/sales/2019/9/1/0/0"
+         }
+     ],
+     "Destinations": [{
+             "Dataset": "salesadlsv2",
+             "Type": "AdlsFolder",
+             "AzureResource": "salesv2"
+         }
+     ]
+ }

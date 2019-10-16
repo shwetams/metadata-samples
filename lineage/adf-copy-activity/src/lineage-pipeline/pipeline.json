@@ -1,0 +1,88 @@
+{
+    "name": "CreateLineage",
+    "properties": {
+        "activities": [
+            {
+                "name": "PostQueueMessage",
+                "type": "WebActivity",
+                "dependsOn": [
+                    {
+                        "activity": "BuildMessageText",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "url": "https://<STORAGE-ACCOUNT>.queue.core.windows.net/lineagerequest/messages",
+                    "method": "POST",
+                    "headers": {
+                        "x-ms-version": "2019-02-02"
+                    },
+                    "body": {
+                        "value": "<QueueMessage>\n<MessageText>\n@{base64(variables('MessageText'))}\n</MessageText>  \n</QueueMessage>",
+                        "type": "Expression"
+                    },
+                    "authentication": {
+                        "type": "MSI",
+                        "resource": "https://<STORAGE-ACCOUNT>.queue.core.windows.net/"
+                    }
+                }
+            },
+            {
+                "name": "BuildMessageText",
+                "type": "SetVariable",
+                "dependsOn": [],
+                "userProperties": [],
+                "typeProperties": {
+                    "variableName": "MessageText",
+                    "value": {
+                        "value": "{\n\"ExecutionStartTime\":\"@{pipeline().parameters.ExecutionStartTime}\",\n\"ExecutionEndTime\":\"@{pipeline().parameters.ExecutionEndTime}\",\n\"Sources\": [\n  {\"Dataset\":\"@{pipeline().parameters.SourceDataset}\",\n  \"Type\":\"@{pipeline().parameters.SourceType}\",\n  \"AzureResource\":\"@{pipeline().parameters.SourceAzureResource}\"}\n],\n\"Destinations\": [\n  {\"Dataset\":\"@{pipeline().parameters.DestinationDataset}\",\n  \"Type\":\"@{pipeline().parameters.DestinationType}\",\n  \"AzureResource\":\"@{pipeline().parameters.DestinationAzureResource}\"}\n]\n}",
+                        "type": "Expression"
+                    }
+                }
+            }
+        ],
+        "parameters": {
+            "ExecutionStartTime": {
+                "type": "string"
+            },
+            "ExecutionEndTime": {
+                "type": "string"
+            },
+            "SourceDataset": {
+                "type": "string"
+            },
+            "SourceType": {
+                "type": "string"
+            },
+            "SourceAzureResource": {
+                "type": "string"
+            },
+            "DestinationDataset": {
+                "type": "string"
+            },
+            "DestinationType": {
+                "type": "string"
+            },
+            "DestinationAzureResource": {
+                "type": "string"
+            }
+        },
+        "variables": {
+            "MessageText": {
+                "type": "String"
+            }
+        },
+        "annotations": []
+    },
+    "type": "Microsoft.DataFactory/factories/pipelines"
+}
