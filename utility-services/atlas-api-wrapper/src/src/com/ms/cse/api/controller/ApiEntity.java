@@ -17,6 +17,13 @@ import org.slf4j.LoggerFactory;
 
 import com.ms.cse.api.service.ApiService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
+
+@Api(value="Atlas Rest API wrapper", description="Operations of entity api on underline Atlas")
+
 @RestController
 public class ApiEntity {
 
@@ -26,11 +33,22 @@ public class ApiEntity {
 	
 	
 
-	
+	@ApiOperation(value = "Add new entity in atlas")
 	@PostMapping("/api/entity")
-	public String entityPost(@RequestBody String ipJSON) {
+	public String entityPost(@ApiParam(value = "{\r\n" + 
+			"    \"entities\": [\r\n" + 
+			"        {\r\n" + 
+			"            \"typeName\": \"adls_gen2_resource_set\",\r\n" + 
+			"            \"createdBy\": \"sg\",\r\n" + 
+			"            \"attributes\": {\r\n" + 
+			"                \"qualifiedName\": \"/2019/\",\r\n" + 
+			"                \"name\": \"/2019/\"\r\n" + 
+			"            }\r\n" + 
+			"        }\r\n" + 
+			"	]\r\n" + 
+			"}", required = true)@RequestBody String input) {
 		try {
-			return apiService.callApi("POST", ipJSON, "v2/entity");
+			return apiService.callApi("POST", input, "v2/entity");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,9 +59,9 @@ public class ApiEntity {
 	
 	
 	@GetMapping("/api/entity/bulk")
-	public String entityBulkGet(@RequestBody String ipJSON) {
+	public String entityBulkGet(@RequestBody String input) {
 		try {
-			return apiService.callApi("GET", ipJSON, "v2/entity/bulk");
+			return apiService.callApi("GET", input, "v2/entity/bulk");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

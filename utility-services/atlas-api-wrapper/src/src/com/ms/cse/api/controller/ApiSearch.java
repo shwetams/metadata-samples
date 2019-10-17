@@ -27,9 +27,9 @@ public class ApiSearch {
 	
 
 	@GetMapping("/api/search")
-	public String searchBasicGet(@RequestBody String ipJSON) {
+	public String searchBasicGet(@RequestBody String queryString) {
 		try {
-			return apiService.callApi("GET", ipJSON, "/v2/search/basic");
+			return apiService.callApi("GET", queryString, "/v2/search/basic");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
