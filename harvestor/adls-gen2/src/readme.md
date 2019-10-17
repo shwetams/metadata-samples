@@ -1,8 +1,15 @@
+### ADLS Gen 2 Scanner
+
 Scanning ADLS Gen 2 folder strucutre is done using databricks job. 
 
-The python notebook needs the following values in Spark Cluster's environment variables
+#### Source - ADLS Gen 2 file system
+#### Output location - Blob storage 
 
-1. Scan_Depth=<<Scan depth - level to scan - int vale>>
+Access to both ADLS Gen 2 and Blob storage is utilized 
+
+This python notebook needs the following values in the **Spark Cluster's environment variables**
+
+1. Scan_Depth=<<Scan depth - level to scan - int value>>
 2. BlobStorage_Output=<<Output container name in blob storage>>
 3. KeyVault_ADLSGen2_Access_Secret_Name=<<Secret name in KeyVault>>
 4. KeyVault_BlobStorage_Access_Secret_Name=<<Secret name in Keyvault for blob storage access key>>
