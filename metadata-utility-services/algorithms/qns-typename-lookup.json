@@ -1,0 +1,100 @@
+[
+  {  "typeName": "azure_storage_service",
+    "qn_type":"SERVICE",
+    "pattern":"{uri}",
+    "input_parameters":[{"param_name":"uri","description":"Azure Storage Account URI"}]
+  },
+  {  "typeName": "azure_datalake_gen2_filesystem",
+    "qn_type":"SERVICE_COMPONENT",
+    "pattern":"{azure_storage_uri}/{filesystem_name}",
+    "input_parameters":[{"param_name":"azure_storage_uri","description":"Azure Storage Account URI - Datalake Gen 2"},{"param_name":"filesystem_name","description":"The Azure Data Lake Gen 2 File System Name"}]
+  },
+  {  "typeName": "azure_datalake_gen2_resource_set",
+    "qn_type":"SERVICE_COMPONENT",
+    "pattern":"{azure_storage_uri}/{filesystem_name}/{resource_set_path}",
+    "input_parameters":[{"param_name":"azure_storage_uri","description":"Azure Storage Account URI - Datalake Gen 2"},{"param_name":"filesystem_name","description":"The Azure Data Lake Gen 2 File System Name"},{"param_name":"resource_set_path","description":"Folder path to point to the partition root"}]
+  },
+  {  "typeName": "tabular_schema",
+    "qn_type":"ABSTRACTION",
+    "pattern":"{azure_storage_uri}/{filesystem_name}/{resource_set_path}#tabular_schema",
+    "input_parameters":[{"param_name":"azure_storage_uri","description":"Azure Storage Account URI - Datalake Gen 2"},{"param_name":"filesystem_name","description":"The Azure Data Lake Gen 2 File System Name"},{"param_name":"resource_set_path","description":"Folder path to point to the partition root"}]
+  },  
+  {  "typeName": "azure_sql_server",
+    "qn_type":"SERVICE",
+    "pattern":"{uri}",
+    "input_parameters":[{"param_name":"uri","description":"SQL Server URI with Port"}]
+  },
+  {  "typeName": "azure_sql_db",
+    "qn_type":"SERVICE_COMPONENT",
+    "pattern":"{azure_sql_server_uri}/{database_name}",
+    "input_parameters":[{"param_name":"azure_sql_server_uri","description":"SQL Server URI with Port"},{"param_name":"database_name","description":"Azure SQL Server/ Datawarehouse /Database Name"}]
+  },
+  {  "typeName": "azure_sql_table",
+    "qn_type":"SERVICE_COMPONENT",
+    "pattern":"{azure_sql_serveruri}/{database_name}/{azure_sql_table_name}",
+    "input_parameters":[{"param_name":"azure_sql_server_uri","description":"SQL Server URI with Port"},{"param_name":"database_name","description":"Azure SQL Server/ Datawarehouse /Database Name"},{"param_name":"azure_sql_table_name","description":"Azure SQL Table Name"}]
+  },
+  {  "typeName": "azure_sql_column",
+    "qn_type":"SERVICE_COMPONENT",
+    "pattern":"{azure_sql_serveruri}/{database_name}/{azure_sql_table_name}/{azure_sql_column_name}",
+    "input_parameters":[{"param_name":"azure_sql_server_uri","description":"SQL Server URI with Port"},{"param_name":"database_name","description":"Azure SQL Server/ Datawarehouse /Database Name"},{"param_name":"azure_sql_table_name","description":"Azure SQL Table Name"},{"param_name":"azure_sql_column_name","description":"Azure SQL Table Column"}]
+  },
+  {  "typeName": "azure_sql_column_sg",
+    "qn_type":"SERVICE_COMPONENT-remove this",
+    "pattern":"{azure_sql_server_uri}/{database_name}",
+    "input_parameters":[{"param_name":"azure_sql_server_uri","description":"SQL Server URI with Port"},{"param_name":"database_name","description":"Azure SQL Server/ Datawarehouse /Database Name"}]
+  },
+  {
+    "typeName":"file_server",
+    "qn_type":"SERVICE",
+    "pattern":"{hostname}",
+    "input_parameters":[{"param_name":"hostname","description":"File Server Host name"}]
+  },
+  {
+    "typeName":"file_path",
+    "qn_type":"SERVICE_COMPONENT",
+    "pattern":"{hostname}/{file_path}",
+    "input_parameters":[{"param_name":"hostname","description":"File Server Host name"},{"param_name":"file_path","description":"File or folder path"}]
+  },
+  {
+    "typeName":"file_path",
+    "qn_type":"SERVICE_COMPONENT",
+    "pattern":"{hostname}/{file_path}",
+    "input_parameters":[{"param_name":"hostname","description":"File Server Host name"},{"param_name":"file_path","description":"File or folder path"}]
+  },
+  {
+    "typeName":"azure_cosmosdb_account",
+    "qn_type":"SERVICE",
+    "pattern":"{cosmosdb_uri}",
+    "input_parameters":[{"param_name":"cosmosdb_uri","description":"Cosmos DB URI with Port"}]
+  },
+  {
+    "typeName":"azure_cosmosdb_database",
+    "qn_type":"SERVICE",
+    "pattern":"{cosmosdb_uri}/{cosmosdb_database}",
+    "input_parameters":[{"param_name":"cosmosdb_uri","description":"Cosmos DB URI with Port"},{"param_name":"cosmosdb_database","description":"Cosmos DB database name"}]
+  },
+  {
+    "typeName":"azure_cosmosdb_container",
+    "qn_type":"SERVICE",
+    "pattern":"{cosmosdb_uri}/{cosmosdb_database}/{container_name}",
+    "input_parameters":[{"param_name":"cosmosdb_uri","description":"Cosmos DB URI with Port"},{"param_name":"cosmosdb_database","description":"Cosmos DB database name"},{"param_name":"container_name","description":"Cosmos DB Container"}]
+  },
+  {
+      "typeName":"adf_copy_activity",
+      "qn_type":"SERVICE_COMPONENT",
+      "pattern":"{datafactory_name}/{pipeline_name}/{activity_name}"
+  },
+  {
+    "typeName":"adf_copy_activity",
+    "qn_type":"SERVICE_COMPONENT",
+    "pattern":"{datafactory_name}/{pipeline_name}/{activity_name}"
+  },
+  {
+    "typeName":"adf_spark_activity",
+    "qn_type":"SERVICE_COMPONENT",
+    "pattern":"{datafactory_name}/{pipeline_name}/{spark_activity_name}"
+  }
+
+
+]
