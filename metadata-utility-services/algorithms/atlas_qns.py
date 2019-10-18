@@ -3,7 +3,7 @@ import json
 import requests
 import urllib.parse
 
-qns_typename_json = "qns-typename-lookup.json"
+qns_typename_json = "algorithms/qns-typename-lookup.json"
 atlas_api_wrapper_url = "https://atlasapiwrapper.azurewebsites.net/api/search?query="
 #from%20azure_cosmosdb_database+where+qualifiedName%3Dtest%2testdb"
 
