@@ -23,8 +23,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         logging.error(str(e))
         output = {}
         output["error_no"] = 500
-        output["error_description"] = str(e)
-        return func.HttpResponse(output,status_code=500,mimetype="application/json")
+        output["error_description"] = str(e)        
+        return func.HttpResponse(json.dumps(output),status_code=500,mimetype="application/json")
 
         
 
