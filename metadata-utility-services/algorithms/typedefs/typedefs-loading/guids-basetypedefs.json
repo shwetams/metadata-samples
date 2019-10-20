@@ -1,0 +1,803 @@
+{
+    "enumDefs": [],
+    "structDefs": [
+        {
+            "category": "STRUCT",
+            "guid": "cc18f51f-9398-4778-99e5-dc3a3164ce94",
+            "createdBy": "reenu",
+            "updatedBy": "admin",
+            "createTime": 1567076857331,
+            "updateTime": 1571566314784,
+            "version": 3,
+            "name": "fs_permissions",
+            "description": "fs_permissions",
+            "typeVersion": "1.0",
+            "serviceType": "file_system",
+            "attributeDefs": [
+                {
+                    "name": "group",
+                    "typeName": "file_action",
+                    "isOptional": false,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 1,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": true,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "user",
+                    "typeName": "file_action",
+                    "isOptional": false,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 1,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": true,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "sticky",
+                    "typeName": "boolean",
+                    "isOptional": false,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 1,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": true,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "others",
+                    "typeName": "file_action",
+                    "isOptional": false,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 1,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": true,
+                    "includeInNotification": false
+                }
+            ]
+        }
+    ],
+    "classificationDefs": [],
+    "entityDefs": [
+        {
+            "category": "ENTITY",
+            "guid": "b7524b62-caec-4daf-aaa4-ffc84e27c6f6",
+            "createdBy": "reenu",
+            "updatedBy": "admin",
+            "createTime": 1567076769597,
+            "updateTime": 1571566314791,
+            "version": 3,
+            "name": "DataSet",
+            "description": "DataSet",
+            "typeVersion": "1.1",
+            "serviceType": "atlas_core",
+            "attributeDefs": [],
+            "superTypes": [
+                "Asset"
+            ],
+            "subTypes": [
+                "rdbms_foreign_key",
+                "azure_file_share",
+                "pseudo_dataset",
+                "azure_datalake_gen1_path",
+                "azure_file",
+                "hive_table",
+                "aws_s3_pseudo_dir",
+                "mssql_column",
+                "sqoop_dbdatastore",
+                "hbase_column",
+                "rdbms_instance",
+                "azure_sql_table",
+                "azure_datalake_gen2_path",
+                "falcon_feed",
+                "jms_topic",
+                "hbase_table",
+                "rdbms_table",
+                "rdbms_column",
+                "hbase_column_family",
+                "hive_column",
+                "azure_blob_container",
+                "azure_cosmosdb_container",
+                "powerbi_item",
+                "rdbms_db",
+                "azure_file_directory",
+                "column",
+                "azure_blob_path",
+                "kafka_topic",
+                "resource_set",
+                "tabular_schema",
+                "azure_datalake_gen2_filesystem",
+                "spark_dataset",
+                "rdbms_index",
+                "azure_sql_column",
+                "mssql_table",
+                "aws_s3_object",
+                "avro_type",
+                "aws_s3_bucket",
+                "fs_path"
+            ],
+            "relationshipAttributeDefs": [
+                {
+                    "name": "inputToProcesses",
+                    "typeName": "array<Process>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "dataset_process_inputs",
+                    "isLegacyAttribute": false
+                },
+                {
+                    "name": "schema",
+                    "typeName": "array<avro_schema>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "avro_schema_associatedEntities",
+                    "isLegacyAttribute": false
+                },
+                {
+                    "name": "meanings",
+                    "typeName": "array<AtlasGlossaryTerm>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "AtlasGlossarySemanticAssignment",
+                    "isLegacyAttribute": false
+                },
+                {
+                    "name": "outputFromProcesses",
+                    "typeName": "array<Process>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "process_dataset_outputs",
+                    "isLegacyAttribute": false
+                },
+                {
+                    "name": "tabular_schema",
+                    "typeName": "tabular_schema",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "tabular_schema_datasets",
+                    "isLegacyAttribute": false
+                }
+            ]
+        },
+        {
+            "category": "ENTITY",
+            "guid": "232eca1f-ba69-470c-838a-3971cf594220",
+            "createdBy": "reenu",
+            "updatedBy": "admin",
+            "createTime": 1567076770314,
+            "updateTime": 1571566314795,
+            "version": 3,
+            "name": "Process",
+            "description": "Process",
+            "typeVersion": "1.1",
+            "serviceType": "atlas_core",
+            "attributeDefs": [
+                {
+                    "name": "status",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "errorMessage",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "inputs",
+                    "typeName": "array<DataSet>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 2147483647,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "outputs",
+                    "typeName": "array<DataSet>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 2147483647,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false
+                }
+            ],
+            "superTypes": [
+                "Asset"
+            ]
+        },
+        {
+            "category": "ENTITY",
+            "guid": "232eca1f-ba69-470c-838a-3971cf594220",
+            "createdBy": "reenu",
+            "updatedBy": "admin",
+            "createTime": 1567076770314,
+            "updateTime": 1571566314808,
+            "version": 4,
+            "name": "Process",
+            "description": "Process",
+            "typeVersion": "1.1",
+            "serviceType": "atlas_core",
+            "attributeDefs": [
+                {
+                    "name": "status",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "errorMessage",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "inputs",
+                    "typeName": "array<DataSet>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 2147483647,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "outputs",
+                    "typeName": "array<DataSet>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 2147483647,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false
+                }
+            ],
+            "superTypes": [
+                "Asset"
+            ],
+            "subTypes": [
+                "falcon_feed_replication",
+                "falcon_process",
+                "spark_join_operation",
+                "adf_copy_activity",
+                "spark_generic_operation",
+                "falcon_feed_creation",
+                "adf_activity_operation",
+                "spark_aggregate_operation",
+                "spark_operation",
+                "spark_filter_operation",
+                "spark_job",
+                "hive_process",
+                "spark_alias_operation",
+                "adf_copy_operation",
+                "spark_project_operation",
+                "storm_topology",
+                "pseudo_process",
+                "adf_activity_run",
+                "spark_write_operation",
+                "adf_copy_activity_run",
+                "adf_activity",
+                "powerbi_process",
+                "sqoop_process",
+                "hive_column_lineage",
+                "spark_sort_operation"
+            ],
+            "relationshipAttributeDefs": [
+                {
+                    "name": "outputs",
+                    "typeName": "array<DataSet>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 2147483647,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "process_dataset_outputs",
+                    "isLegacyAttribute": true
+                },
+                {
+                    "name": "parent",
+                    "typeName": "Process",
+                    "isOptional": false,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "process_parent",
+                    "isLegacyAttribute": false
+                },
+                {
+                    "name": "inputs",
+                    "typeName": "array<DataSet>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 2147483647,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "dataset_process_inputs",
+                    "isLegacyAttribute": true
+                },
+                {
+                    "name": "subProcesses",
+                    "typeName": "array<Process>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "constraints": [
+                        {
+                            "type": "ownedRef"
+                        }
+                    ],
+                    "relationshipTypeName": "process_parent",
+                    "isLegacyAttribute": false
+                },
+                {
+                    "name": "meanings",
+                    "typeName": "array<AtlasGlossaryTerm>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "AtlasGlossarySemanticAssignment",
+                    "isLegacyAttribute": false
+                }
+            ]
+        },
+        {
+            "category": "ENTITY",
+            "guid": "dbfcd2de-c782-410f-8d2d-086a3cc14584",
+            "createdBy": "reenu",
+            "updatedBy": "admin",
+            "createTime": 1567076769558,
+            "updateTime": 1571566314811,
+            "version": 3,
+            "name": "Asset",
+            "description": "Asset",
+            "typeVersion": "1.1",
+            "serviceType": "atlas_core",
+            "attributeDefs": [
+                {
+                    "name": "name",
+                    "typeName": "string",
+                    "isOptional": false,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 1,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": true,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "description",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "owner",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": true,
+                    "includeInNotification": false
+                }
+            ],
+            "superTypes": [
+                "Referenceable"
+            ],
+            "subTypes": [
+                "mssql_db",
+                "azure_sql_schema",
+                "DataQuality",
+                "DataSet",
+                "Process",
+                "azure_cosmosdb_database",
+                "hive_db",
+                "mssql_instance",
+                "hbase_namespace",
+                "azure_resource",
+                "powerbi_resource",
+                "Infrastructure",
+                "mssql_schema"
+            ],
+            "relationshipAttributeDefs": [
+                {
+                    "name": "meanings",
+                    "typeName": "array<AtlasGlossaryTerm>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "AtlasGlossarySemanticAssignment",
+                    "isLegacyAttribute": false
+                }
+            ]
+        },
+        {
+            "category": "ENTITY",
+            "guid": "cb4f506f-da3e-4ee5-a545-de2283436184",
+            "createdBy": "reenu",
+            "updatedBy": "admin",
+            "createTime": 1567076857360,
+            "updateTime": 1571566314815,
+            "version": 3,
+            "name": "fs_path",
+            "description": "fs_path",
+            "typeVersion": "1.0",
+            "serviceType": "file_system",
+            "attributeDefs": [
+                {
+                    "name": "path",
+                    "typeName": "string",
+                    "isOptional": false,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 1,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": true,
+                    "includeInNotification": true
+                },
+                {
+                    "name": "createTime",
+                    "typeName": "date",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": true,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "modifiedTime",
+                    "typeName": "date",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": true,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "isFile",
+                    "typeName": "boolean",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": true,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "isSymlink",
+                    "typeName": "boolean",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "fileSize",
+                    "typeName": "long",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "group",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": true,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "posixPermissions",
+                    "typeName": "fs_permissions",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": true,
+                    "includeInNotification": false
+                }
+            ],
+            "superTypes": [
+                "DataSet"
+            ],
+            "subTypes": [
+                "hdfs_path"
+            ],
+            "relationshipAttributeDefs": [
+                {
+                    "name": "inputToProcesses",
+                    "typeName": "array<Process>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "dataset_process_inputs",
+                    "isLegacyAttribute": false
+                },
+                {
+                    "name": "schema",
+                    "typeName": "array<avro_schema>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "avro_schema_associatedEntities",
+                    "isLegacyAttribute": false
+                },
+                {
+                    "name": "meanings",
+                    "typeName": "array<AtlasGlossaryTerm>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "AtlasGlossarySemanticAssignment",
+                    "isLegacyAttribute": false
+                },
+                {
+                    "name": "outputFromProcesses",
+                    "typeName": "array<Process>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "process_dataset_outputs",
+                    "isLegacyAttribute": false
+                },
+                {
+                    "name": "tabular_schema",
+                    "typeName": "tabular_schema",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "tabular_schema_datasets",
+                    "isLegacyAttribute": false
+                }
+            ]
+        },
+        {
+            "category": "ENTITY",
+            "guid": "278aed62-47c9-4ca8-b612-eec8b3291650",
+            "createdBy": "reenu",
+            "updatedBy": "admin",
+            "createTime": 1567076857401,
+            "updateTime": 1571566314823,
+            "version": 3,
+            "name": "hdfs_path",
+            "description": "hdfs_path",
+            "typeVersion": "1.1",
+            "serviceType": "file_system",
+            "attributeDefs": [
+                {
+                    "name": "clusterName",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": true,
+                    "includeInNotification": true
+                },
+                {
+                    "name": "numberOfReplicas",
+                    "typeName": "int",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": true,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "extendedAttributes",
+                    "typeName": "map<string,string>",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "nameServiceId",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": true
+                }
+            ],
+            "superTypes": [
+                "fs_path"
+            ],
+            "subTypes": [],
+            "relationshipAttributeDefs": [
+                {
+                    "name": "inputToProcesses",
+                    "typeName": "array<Process>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "dataset_process_inputs",
+                    "isLegacyAttribute": false
+                },
+                {
+                    "name": "schema",
+                    "typeName": "array<avro_schema>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "avro_schema_associatedEntities",
+                    "isLegacyAttribute": false
+                },
+                {
+                    "name": "meanings",
+                    "typeName": "array<AtlasGlossaryTerm>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "AtlasGlossarySemanticAssignment",
+                    "isLegacyAttribute": false
+                },
+                {
+                    "name": "outputFromProcesses",
+                    "typeName": "array<Process>",
+                    "isOptional": true,
+                    "cardinality": "SET",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "process_dataset_outputs",
+                    "isLegacyAttribute": false
+                },
+                {
+                    "name": "tabular_schema",
+                    "typeName": "tabular_schema",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": -1,
+                    "valuesMaxCount": -1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false,
+                    "relationshipTypeName": "tabular_schema_datasets",
+                    "isLegacyAttribute": false
+                }
+            ]
+        }
+    ],
+    "relationshipDefs": []
+}
