@@ -39,11 +39,7 @@
     "pattern":"{azure_sql_serveruri}/{database_name}/{azure_sql_table_name}/{azure_sql_column_name}",
     "input_parameters":[{"param_name":"azure_sql_server_uri","description":"SQL Server URI with Port"},{"param_name":"database_name","description":"Azure SQL Server/ Datawarehouse /Database Name"},{"param_name":"azure_sql_table_name","description":"Azure SQL Table Name"},{"param_name":"azure_sql_column_name","description":"Azure SQL Table Column"}]
   },
-  {  "typeName": "azure_sql_column_sg",
-    "qn_type":"SERVICE_COMPONENT-remove this",
-    "pattern":"{azure_sql_server_uri}/{database_name}",
-    "input_parameters":[{"param_name":"azure_sql_server_uri","description":"SQL Server URI with Port"},{"param_name":"database_name","description":"Azure SQL Server/ Datawarehouse /Database Name"}]
-  },
+  
   {
     "typeName":"file_server",
     "qn_type":"SERVICE",
@@ -81,19 +77,17 @@
     "input_parameters":[{"param_name":"cosmosdb_uri","description":"Cosmos DB URI with Port"},{"param_name":"cosmosdb_database","description":"Cosmos DB database name"},{"param_name":"container_name","description":"Cosmos DB Container"}]
   },
   {
-      "typeName":"adf_copy_activity",
-      "qn_type":"SERVICE_COMPONENT",
-      "pattern":"{datafactory_name}/{pipeline_name}/{activity_name}"
-  },
-  {
     "typeName":"adf_copy_activity",
     "qn_type":"SERVICE_COMPONENT",
-    "pattern":"{datafactory_name}/{pipeline_name}/{activity_name}"
+    "pattern":"{datafactory_name}/{pipeline_name}/{activity_name}",
+    "input_parameters":[{"param_name":"datafactory_name","description":"Datafactory name"},{"param_name":"pipeline_name","description":"Pipeline Name"},{"param_name":"activity_name","description":"Copy Activity name"}]
   },
   {
     "typeName":"adf_spark_activity",
     "qn_type":"SERVICE_COMPONENT",
-    "pattern":"{datafactory_name}/{pipeline_name}/{spark_activity_name}"
+    "pattern":"{datafactory_name}/{pipeline_name}/{spark_activity_name}",
+    "input_parameters":[{"param_name":"datafactory_name","description":"Datafactory name"},{"param_name":"pipeline_name","description":"Pipeline Name"},{"param_name":"spark_activity_name","description":"Spark Activity name"}]
+  
   }
 
 

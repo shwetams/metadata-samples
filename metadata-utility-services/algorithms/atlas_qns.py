@@ -4,7 +4,9 @@ import requests
 import urllib.parse
 
 qns_typename_json = "algorithms/qns-typename-lookup.json"
-atlas_api_wrapper_url = "https://atlasapiwrapper.azurewebsites.net/api/search?query="
+#atlas_api_wrapper_url = "https://atlasapiwrapper.azurewebsites.net/api/search?query="
+## for testing Atlas URL
+atlas_api_wrapper_url = "http://admin:admin@52.189.237.74:21000/api/search?query=" 
 #from%20azure_cosmosdb_database+where+qualifiedName%3Dtest%2testdb"
 
 # Get the list of resources
