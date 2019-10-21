@@ -88,7 +88,15 @@
     "pattern":"{datafactory_name}/{pipeline_name}/{spark_activity_name}",
     "input_parameters":[{"param_name":"datafactory_name","description":"Datafactory name"},{"param_name":"pipeline_name","description":"Pipeline Name"},{"param_name":"spark_activity_name","description":"Spark Activity name"}]
   
+  },
+  {
+    "typeName":"dq_rule",
+    "qn_type":"SERVICE_COMPONENT",
+    "pattern":"{col_qualified_name}/{rule_id}",
+    "input_parameters":[{"param_name":"col_qualified_name","description":"Column Qualified Name"},{"param_name":"rule_id","description":"Rule Id"}]
+  
   }
+  
 
 
 ]

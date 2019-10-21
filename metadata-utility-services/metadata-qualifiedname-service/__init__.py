@@ -11,8 +11,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         if req.method == "GET":
             typeName = req.params.get('typeName')
             required_inputs = atlas_qns.get_list_inputs(typeName)
-            required_input_out = json.dumps(required_inputs) 
-            return func.HttpResponse(required_input_out,status_code=200,mimetype="application/json")
+            if len(required_inputs) == 0 or required_inputs == None:
+                return func.HttpResponse(f"given typeName {typeName} is not recognised, please check the typeName entered",status_code=404) 
+            else:
+                required_input_out = json.dumps(required_inputs) 
+                return func.HttpResponse(required_input_out,status_code=200,mimetype="application/json")
         if req.method == "POST":
             req_body = req.get_json()
             typeName = req.params.get("typeName")
