@@ -4,6 +4,17 @@
     "pattern":"{uri}",
     "input_parameters":[{"param_name":"uri","description":"Azure Storage Account URI"}]
   },
+  {  "typeName": "azure_storage_account",
+    "qn_type":"SERVICE",
+    "pattern":"{uri}/azure_storage_account",
+    "input_parameters":[{"param_name":"uri","description":"Azure Storage Account URI"}]
+  },
+
+  {  "typeName": "azure_datalake_gen2_service",
+    "qn_type":"SERVICE",
+    "pattern":"{uri}/azure_datalake_gen2_service",
+    "input_parameters":[{"param_name":"uri","description":"Azure Storage Account URI"}]
+  },
   {  "typeName": "azure_datalake_gen2_filesystem",
     "qn_type":"SERVICE_COMPONENT",
     "pattern":"{azure_storage_uri}/{filesystem_name}",
@@ -21,7 +32,7 @@
   },  
   {  "typeName": "azure_sql_server",
     "qn_type":"SERVICE",
-    "pattern":"{uri}",
+    "pattern":"{azure_sql_server_uri}",
     "input_parameters":[{"param_name":"uri","description":"SQL Server URI with Port"}]
   },
   {  "typeName": "azure_sql_db",
@@ -29,17 +40,22 @@
     "pattern":"{azure_sql_server_uri}/{database_name}",
     "input_parameters":[{"param_name":"azure_sql_server_uri","description":"SQL Server URI with Port"},{"param_name":"database_name","description":"Azure SQL Server/ Datawarehouse /Database Name"}]
   },
+  { 
+    "typeName": "azure_sql_schema",
+    "qn_type":"SERVICE_COMPONENT",
+    "pattern":"{azure_sql_server_uri}/{database_name}/{schema_name}",
+    "input_parameters":[{"param_name":"azure_sql_server_uri","description":"SQL Server URI with Port"},{"param_name":"database_name","description":"Azure SQL Server/ Datawarehouse /Database Name"}]
+  },
   {  "typeName": "azure_sql_table",
     "qn_type":"SERVICE_COMPONENT",
-    "pattern":"{azure_sql_serveruri}/{database_name}/{azure_sql_table_name}",
+    "pattern":"{azure_sql_server_uri}/{database_name}/{azure_sql_table_name}",
     "input_parameters":[{"param_name":"azure_sql_server_uri","description":"SQL Server URI with Port"},{"param_name":"database_name","description":"Azure SQL Server/ Datawarehouse /Database Name"},{"param_name":"azure_sql_table_name","description":"Azure SQL Table Name"}]
   },
   {  "typeName": "azure_sql_column",
     "qn_type":"SERVICE_COMPONENT",
-    "pattern":"{azure_sql_serveruri}/{database_name}/{azure_sql_table_name}/{azure_sql_column_name}",
+    "pattern":"{azure_sql_server_uri}/{database_name}/{azure_sql_table_name}/{azure_sql_column_name}",
     "input_parameters":[{"param_name":"azure_sql_server_uri","description":"SQL Server URI with Port"},{"param_name":"database_name","description":"Azure SQL Server/ Datawarehouse /Database Name"},{"param_name":"azure_sql_table_name","description":"Azure SQL Table Name"},{"param_name":"azure_sql_column_name","description":"Azure SQL Table Column"}]
   },
-  
   {
     "typeName":"file_server",
     "qn_type":"SERVICE",

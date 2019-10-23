@@ -47,29 +47,34 @@ print(json.dumps(input_entities))
 def create_entity_def(input_entities):
     entities = []
     entities_def = {}
-    for input_entity in input_entities:
-        entity = {}
-        if input_entity.get("entity_type_name") is not None:
-            entity["typeName"] = input_entity["entity_type_name"] 
-            if input_entity.get("guid") is not None:
-                entity["guid"] = input_entity["guid"]
-            if input_entity.get("created_by") is not None:
-                entity["createdBy"]= input_entity["created_by"]
-            attributes = {}
-            if input_entity.get("attributes") is not None:
-                for attribute in input_entity["attributes"]:
-                    if attribute["is_entityref"]== False:
-                        attributes[attribute["attr_name"]] = attribute["attr_value"] 
-                    else:
-                        attributes[attribute["attr_name"]] = []
-                        for att_v in attribute["attr_value"]:
-                            attributes[attribute["attr_name"]].append(att_v)
-                entity["attributes"] = attributes
-        entities.append(entity)
-    entities_def = {"entities":entities}
-    if len(entities) <= 0:
-        entities_def = None
-    return(entities_def)
+    try:        
+        for input_entity in input_entities:
+            entity = {}
+            if input_entity.get("entity_type_name") is not None:
+                entity["typeName"] = input_entity["entity_type_name"] 
+                if input_entity.get("guid") is not None:
+                    entity["guid"] = input_entity["guid"]
+                if input_entity.get("created_by") is not None:
+                    entity["createdBy"]= input_entity["created_by"]
+                attributes = {}
+                if input_entity.get("attributes") is not None:
+                    for attribute in input_entity["attributes"]:
+                        if attribute["is_entityref"]== False:
+                            attributes[attribute["attr_name"]] = attribute["attr_value"] 
+                        else:
+                            attributes[attribute["attr_name"]] = []
+                            for att_v in attribute["attr_value"]:
+                                attributes[attribute["attr_name"]].append(att_v)
+                    entity["attributes"] = attributes
+            entities.append(entity)
+        entities_def = {"entities":entities}
+        if len(entities) <= 0:
+            entities_def = None
+        return(entities_def)
+    except Exception as e:
+        entities_def["error_code"] = 500,
+        entities_def["error_description"] = str(e)
+
 
 
 #create_entity_def(input_entities)

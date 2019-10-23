@@ -68,7 +68,7 @@ def verify_qualified_name(typeName, qualifiedName):
     qualifiedNameDetails["guid"] = None
     qualifiedNameDetails["error_code"] = 0
     qualifiedNameDetails["error_description"] = ""
-    query = urllib.parse.quote("from "+ str(typeName) + " where qualifiedName="+ str(qualifiedName))
+    query = urllib.parse.quote("from "+ str(typeName) + "+where+qualifiedName="+ str(qualifiedName))
     url = atlas_api_wrapper_url+query
     req = requests.get(url=url)
     if req.status_code == 200:
@@ -81,8 +81,9 @@ def verify_qualified_name(typeName, qualifiedName):
                 qualifiedNameDetails["isExists"] = True
                 qualifiedNameDetails["guid"] = entity.get("guid")
     else:
-        qualifiedNameDetails["error_code"] = 103
-        qualifiedNameDetails["error_description"] = str(req.status_code) + req.reason
+        if req.status_code is not 404:
+            qualifiedNameDetails["error_code"] = 103
+            qualifiedNameDetails["error_description"] = str(req.status_code) + req.reason
     return qualifiedNameDetails
 
 
