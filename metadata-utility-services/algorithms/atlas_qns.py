@@ -58,7 +58,7 @@ def create_qualified_name(typeName, input_params,required_inputs):
         param_name = inputs["param_name"]
         param_value = input_params[param_name]
         qualified_name = str(qualified_name).replace("{"+str(param_name)+"}",param_value)
-    
+        qualified_name = str(qualified_name).lower()
     return qualified_name
 
 def verify_qualified_name(typeName, qualifiedName):

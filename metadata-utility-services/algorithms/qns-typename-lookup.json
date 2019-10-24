@@ -25,6 +25,13 @@
     "pattern":"{azure_storage_uri}/{filesystem_name}/{resource_set_path}",
     "input_parameters":[{"param_name":"azure_storage_uri","description":"Azure Storage Account URI - Datalake Gen 2"},{"param_name":"filesystem_name","description":"The Azure Data Lake Gen 2 File System Name"},{"param_name":"resource_set_path","description":"Folder path to point to the partition root"}]
   },
+  {  "typeName": "column",
+    "qn_type":"SERVICE_COMPONENT",
+    "pattern":"{azure_storage_uri}/{filesystem_name}/{resource_set_name}/{column_name}",
+    "input_parameters":[{"param_name":"azure_storage_uri","description":"Azure Storage Account URI - Datalake Gen 2"},{"param_name":"filesystem_name","description":"The Azure Data Lake Gen 2 File System Name"},{"param_name":"column_name","description":"Folder path to point to the partition root"}]
+  },
+  
+
   {  "typeName": "tabular_schema",
     "qn_type":"ABSTRACTION",
     "pattern":"{azure_storage_uri}/{filesystem_name}/{resource_set_path}#tabular_schema",
@@ -33,7 +40,7 @@
   {  "typeName": "azure_sql_server",
     "qn_type":"SERVICE",
     "pattern":"{azure_sql_server_uri}",
-    "input_parameters":[{"param_name":"uri","description":"SQL Server URI with Port"}]
+    "input_parameters":[{"param_name":"azure_sql_server_uri","description":"SQL Server URI with Port"}]
   },
   {  "typeName": "azure_sql_db",
     "qn_type":"SERVICE_COMPONENT",
@@ -44,7 +51,7 @@
     "typeName": "azure_sql_schema",
     "qn_type":"SERVICE_COMPONENT",
     "pattern":"{azure_sql_server_uri}/{database_name}/{schema_name}",
-    "input_parameters":[{"param_name":"azure_sql_server_uri","description":"SQL Server URI with Port"},{"param_name":"database_name","description":"Azure SQL Server/ Datawarehouse /Database Name"}]
+    "input_parameters":[{"param_name":"azure_sql_server_uri","description":"SQL Server URI with Port"},{"param_name":"database_name","description":"Azure SQL Server/ Datawarehouse /Database Name"},{"param_name":"schema_name","description":"SQL Database Schema Name"}]
   },
   {  "typeName": "azure_sql_table",
     "qn_type":"SERVICE_COMPONENT",
