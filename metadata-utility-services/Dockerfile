@@ -3,6 +3,7 @@ FROM mcr.microsoft.com/azure-functions/python:2.0
 ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
     AzureFunctionsJobHost__Logging__Console__IsEnabled=true
 
+ENV ATLAS_WRAPPER_URL="https://atlasapiwrapper.azurewebsites.net"
 COPY . /home/site/wwwroot
 
 RUN cd /home/site/wwwroot && \

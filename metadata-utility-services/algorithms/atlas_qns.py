@@ -2,12 +2,13 @@ import json
 #import http.client
 import requests
 import urllib.parse
+import os
 
 qns_typename_json = "algorithms/qns-typename-lookup.json"
-atlas_api_wrapper_url = "https://atlasapiwrapper.azurewebsites.net/api/search?query="
+atlas_api_wrapper_url_ev = "ATLAS_WRAPPER_URL"
+atlas_api_wrapper_url = os.environ(atlas_api_wrapper_url_ev + "/api/search")
 ## for testing Atlas URL
-#atlas_api_wrapper_url = "http://admin:admin@52.189.237.74:21000/api/search?query=" 
-#from%20azure_cosmosdb_database+where+qualifiedName%3Dtest%2testdb"
+
 
 # Get the list of resources
 
@@ -69,21 +70,25 @@ def verify_qualified_name(typeName, qualifiedName):
     qualifiedNameDetails["error_code"] = 0
     qualifiedNameDetails["error_description"] = ""
     query = urllib.parse.quote("from "+ str(typeName) + "+where+qualifiedName="+ str(qualifiedName))
-    url = atlas_api_wrapper_url+query
-    req = requests.get(url=url)
-    if req.status_code == 200:
-        data = req.json()
-        for entity in data["entities"]:
-            e_typeName = entity.get("typeName")
-            e_attributes = {}
-            e_attributes = entity.get("attributes")
-            if e_typeName == typeName and e_attributes.get("qualifiedName") == qualifiedName:
-                qualifiedNameDetails["isExists"] = True
-                qualifiedNameDetails["guid"] = entity.get("guid")
+    if atlas_api_wrapper_url is not None:
+        url = atlas_api_wrapper_url+query
+        req = requests.get(url=url)
+        if req.status_code == 200:
+            data = req.json()
+            for entity in data["entities"]:
+                e_typeName = entity.get("typeName")
+                e_attributes = {}
+                e_attributes = entity.get("attributes")
+                if e_typeName == typeName and e_attributes.get("qualifiedName") == qualifiedName:
+                    qualifiedNameDetails["isExists"] = True
+                    qualifiedNameDetails["guid"] = entity.get("guid")
+        else:
+            if req.status_code is not 404:
+                qualifiedNameDetails["error_code"] = 103
+                qualifiedNameDetails["error_description"] = str(req.status_code) + req.reason
     else:
-        if req.status_code is not 404:
-            qualifiedNameDetails["error_code"] = 103
-            qualifiedNameDetails["error_description"] = str(req.status_code) + req.reason
+        qualifiedNameDetails["error_code"] = 104
+        qualifiedNameDetails["error_description"] = "Cannot find Atlas API Environment variable"
     return qualifiedNameDetails
 
 
