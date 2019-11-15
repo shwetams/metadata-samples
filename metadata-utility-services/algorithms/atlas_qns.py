@@ -5,11 +5,11 @@ import urllib.parse
 import os
 
 qns_typename_json = "algorithms/qns-typename-lookup.json"
-#atlas_api_wrapper_url_ev = "ATLAS_WRAPPER_URL"
+atlas_api_wrapper_url_ev = "ATLAS_WRAPPER_URL"
 
 #os.environ["ATLAS_WRAPPER_URL"]="https://atlasapiwrapper.azurewebsites.net/api/search"
 atlas_api_wrapper_url = "https://atlasapiwrapper.azurewebsites.net/api/search?query="
-#atlas_api_wrapper_url = os.environ.get(atlas_api_wrapper_url_ev)
+#atlas_api_wrapper_url = os.environ[atlas_api_wrapper_url_ev] + "?query="
 ## for testing Atlas URL
 
 
